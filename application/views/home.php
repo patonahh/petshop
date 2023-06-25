@@ -22,7 +22,7 @@
                     <div class="container">
                         <div class="row justify-content-end">
                             <div class="col-lg-8 text-end">
-                                <p class="fs-4 text-white">Kingdom Petshop</p>
+                                <p class="fs-4 text-white">Family Rabbit</p>
                                 <h1 class="text-white mb-5 animated slideInRight">Menyediakan berbagai kebutuhan untuk peliharaan Anda</h1>
                                 <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInLeft">Lebih Jauh</a>
                             </div>
@@ -48,7 +48,7 @@
     <div class="container">
         <div class="text-center mx-auto pb-4 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
             <p class="section-title bg-white text-center text-primary px-3">Hewan Kami</p>
-            <h1 class="mb-5">Hewan yang berada di Petshop Kingdom</h1>
+            <h1 class="mb-5">Hewan yang berada di Family Rabbit</h1>
         </div>
         <div class="row gy-5 gx-4 ms-5">
             <div class="col-lg-5 col-md-6 pt-5 ms-5 pl-5 wow fadeInUp" data-wow-delay="0.1s">
