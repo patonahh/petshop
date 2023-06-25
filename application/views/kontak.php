@@ -55,7 +55,7 @@
                         </div>
                         <div class="ms-3">
                             <h6>Kantor Kami</h6>
-                            <span>Jalan jalan kemana mana</span>
+                            <span>Jl. KH. R. Abdullah Bin Nuh, RT.05/RW.04, Cibadak, Kec. Tanah Sereal, Kota Bogor, Jawa Barat 16164</span>
                         </div>
                     </div>
                     <div class="d-flex border-bottom pb-3 mb-3">
@@ -73,7 +73,7 @@
                         </div>
                         <div class="ms-3">
                             <h6>Email</h6>
-                            <span>polaopolay@gmail.com</span>
+                            <span>familyrabbit@gmail.com</span>
                         </div>
                     </div>
 
