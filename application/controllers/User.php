@@ -50,7 +50,6 @@ class User extends CI_Controller
                     }
                     $gambar_baru = $this->upload->data('file_name');
                     $this->db->set('image', $gambar_baru);
-                } else {
                 }
             }
 
@@ -217,6 +216,42 @@ class User extends CI_Controller
     public function pembayaran()
     {
         $this->load->library('form_validation');
+        if ($_POST != null) {
+            $this->form_validation->set_rules([
+                [
+                    'field' => 'nama',
+                    'label' => 'Nama',
+                    'rules' => 'required|alpha',
+                    'errors' => [
+                        'required' => '{label} harus diisi',
+                        'alpha' => '{label} tidak boleh ada nomor',
+                    ],
+                ],
+                [
+                    'field' => 'alamat',
+                    'label' => 'Alamat',
+                    'rules' => 'required',
+                    'errors' => [
+                        'required' => '{label} harus diisi',
+                    ],
+                ],
+                [
+                    'field' => 'no_telepon',
+                    'label' => 'Nomor Telepon',
+                    'rules' => 'required|numeric|min_length[10]|max_length[13]',
+                    'errors' => [
+                        'required' => '{label} harus diisi',
+                        'min_length' => '{label} kurang dari {param} angka',
+                        'max_length' => '{label} lebih dari {param} angka',
+                    ],
+                ],
+            ]);
+
+            if ($this->form_validation->run()) {
+                $this->proses($this->input->post('nama'), $this->input->post('alamat'));
+            }
+        }
+
         $data['judul'] = "Pembayaran";
         $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
         $this->load->view('user/userheader', $data);
@@ -224,58 +259,20 @@ class User extends CI_Controller
         $this->load->view('footer', $data);
     }
 
-    public function proses()
+    private function proses($nama, $alamat)
     {
-        $this->load->library('form_validation');
         date_default_timezone_set('Asia/Jakarta');
-
-        $this->form_validation->set_rules([
-            [
-                'field' => 'nama',
-                'label' => 'Nama',
-                'rules' => 'required|alpha',
-                'errors' => [
-                    'required' => '{label} harus diisi',
-                    'alpha' => '{label} tidak boleh ada nomor',
-                ],
-            ],
-            [
-                'field' => 'alamat',
-                'label' => 'Alamat',
-                'rules' => 'required',
-                'errors' => [
-                    'required' => '{label} harus diisi',
-                ],
-            ],
-            [
-                'field' => 'no_telepon',
-                'label' => 'Nomor Telepon',
-                'rules' => 'required|numeric|min_length[10]|max_length[13]',
-                'errors' => [
-                    'required' => '{label} harus diisi',
-                    'min_length' => '{label} kurang dari {param} angka',
-                    'max_length' => '{label} lebih dari {param} angka',
-                ],
-            ],
-        ]);
-
-        if (!$this->form_validation->run()) {
-            redirect('user/pembayaran');
-        } else {
-            $nama = $this->input->post('nama');
-            $alamat = $this->input->post('alamat');
-            $faktur = [
-                'nama' => $nama,
-                'alamat' => $alamat,
-                'tgl_pesan' => date('Y-m-d H:i:s'),
-                'batas_pembayaran' => date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d') + 1, date('Y'))),
-            ];
-            $id = $this->ModelFaktur->saveFaktur($faktur);
-            $this->ModelFaktur->saveDetailFaktur($id);
-            $this->cart->destroy();
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" align="center" role="alert">Selamat! Pesanan Anda berhasil di proses!.</div>');
-            redirect('user/produk');
-        }
+        $faktur = [
+            'nama' => $nama,
+            'alamat' => $alamat,
+            'tgl_pesan' => date('Y-m-d H:i:s'),
+            'batas_pembayaran' => date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d') + 1, date('Y'))),
+        ];
+        $id = $this->ModelFaktur->saveFaktur($faktur);
+        $this->ModelFaktur->saveDetailFaktur($id);
+        $this->cart->destroy();
+        $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" align="center" role="alert">Selamat! Pesanan Anda berhasil di proses!.</div>');
+        redirect('user/produk');
 
         // $data['judul'] = "Proses Pemesanan";
         // $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();

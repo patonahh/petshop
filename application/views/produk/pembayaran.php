@@ -1,3 +1,4 @@
+<?php $this->load->library('form_validation'); ?>
 <!-- Page Header Start -->
 <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
     <div class="container text-center py-5">
@@ -26,26 +27,26 @@
                     ?>
                 </div>
                 <h2>Form Pembayaran</h2>
-                <form method="post" action="<?= base_url('user/proses'); ?>">
+                <form method="post">
                     <p>
                         <label class="text-pad">Nama Lengkap</label>
                         <input type="text" value="<?= set_value('nama'); ?>" name="nama" placeholder="Masukan Nama Lengkap" aria-describedby="namaError">
                         <span id="namaError" class="form-text text-danger">
-                            <?= validation_errors('nama'); ?>
+                            <?= form_error('nama'); ?>
                         </span>
                     </p>
                     <p>
                         <label class="text-pad">Alamat Lengkap</label>
                         <input type="text" value="<?= set_value('alamat'); ?>" name="alamat" placeholder="Masukan Alamat Lengkap" aria-describedby="alamatError">
                         <span id="alamatError" class="form-text text-danger">
-                            <?= validation_errors('alamat'); ?>
+                            <?= form_error('alamat'); ?>
                         </span>
                     </p>
                     <p>
                         <label class="text-pad">Nomor Telepon</label>
                         <input type="text" value="<?= set_value('no_telepon'); ?>" name="no_telepon" placeholder="Masukan Nomor Telepon Lengkap" aria-describedby="nomorError">
                         <span id="nomorError" class="form-text text-danger">
-                            <?= validation_errors('alamat'); ?>
+                            <?= form_error('no_telepon'); ?>
                         </span>
                     </p>
                     <p>
