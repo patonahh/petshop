@@ -12,7 +12,7 @@
             <div class="login-text">
                 <img src="<?php echo base_url() ?>assets/img/logo.png" alt="">
                 <p class="mt-3">
-                    Bergabunglah Menjadi Bagian dari Kingdom Pet Shop!
+                    Bergabunglah Menjadi Bagian dari Family Rabbit!
                 </p>
             </div>
         </div>
