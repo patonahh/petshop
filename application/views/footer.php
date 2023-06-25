@@ -5,7 +5,7 @@
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Toko Kami</h5>
                 <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Jl. KH. R. Abdullah Bin Nuh, RT.05/RW.04, Cibadak, Kec. Tanah Sereal, Kota Bogor, Jawa Barat 16164</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+62 85858585</p>
+                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+62 858 8832 3280</p>
                 <p class="mb-2"><i class="fa fa-envelope me-3"></i>family.rabbit@gmail.com</p>
                 <div class="d-flex pt-3">
                     <a class="btn btn-square btn-secondary rounded-circle me-2" href=""><i class="fab fa-twitter"></i></a>
@@ -24,11 +24,9 @@
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Jam Operasional</h5>
                 <p class="mb-1">Senin - Jumat</p>
-                <h6 class="text-light">08:00 - 16:00 pm</h6>
-                <p class="mb-1">Sabtu</p>
-                <h6 class="text-light">08:00 - 12:00 pm</h6>
-                <p class="mb-1">Minggu</p>
-                <h6 class="text-light">Tutup</h6>
+                <h6 class="text-light">08:00 - 17:00 pm</h6>
+                <p class="mb-1">Sabtu - Minggu</p>
+                <h6 class="text-light">08:00 - 20:00 pm</h6>
             </div>
         </div>
     </div>
