@@ -11,7 +11,7 @@ class Pengunjung extends CI_Controller
 
     public function index()
     {
-        if (get_instance()->session->userdata('email')) redirect('user/home');
+        if ($this->session->userdata('email')) redirect('user/home');
         $data['judul'] = "Home";
         $this->load->view('header', $data);
         $this->load->view('home', $data);
@@ -20,7 +20,7 @@ class Pengunjung extends CI_Controller
 
     public function pet()
     {
-        if (get_instance()->session->userdata('email')) redirect('user/pet');
+        if ($this->session->userdata('email')) redirect('user/pet');
         $data['judul'] = "Daftar Hewan";
         $this->load->view('header', $data);
         $this->load->view('pet/pet', $data);
@@ -29,7 +29,7 @@ class Pengunjung extends CI_Controller
 
     public function produk()
     {
-        if (get_instance()->session->userdata('email')) redirect('user/produk');
+        if ($this->session->userdata('email')) redirect('user/produk');
         $data['judul'] = "Kategori Produk";
         $data['produk'] = $this->ModelProduk->getProduk()->result();
         $this->load->view('header', $data);
@@ -39,7 +39,7 @@ class Pengunjung extends CI_Controller
 
     public function galeri()
     {
-        if (get_instance()->session->userdata('email')) redirect('user/galeri');
+        if ($this->session->userdata('email')) redirect('user/galeri');
         $data['judul'] = "Galeri Foto";
         $this->load->view('header', $data);
         $this->load->view('tentangkami/galeri', $data);
@@ -48,7 +48,7 @@ class Pengunjung extends CI_Controller
 
     public function team()
     {
-        if (get_instance()->session->userdata('email')) redirect('user/team');
+        if ($this->session->userdata('email')) redirect('user/team');
         $data['judul'] = "Team Kami";
         $this->load->view('header', $data);
         $this->load->view('tentangkami/tim', $data);
@@ -57,7 +57,7 @@ class Pengunjung extends CI_Controller
 
     public function kontak()
     {
-        if (get_instance()->session->userdata('email')) redirect('user/kontak');
+        if ($this->session->userdata('email')) redirect('user/kontak');
         $data['judul'] = "Hubungi Kami";
         $this->load->view('header', $data);
         $this->load->view('kontak', $data);

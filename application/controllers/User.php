@@ -215,48 +215,36 @@ class User extends CI_Controller
 
     public function pembayaran()
     {
-        $this->load->library('form_validation');
-        if ($_POST != null) {
-            $this->form_validation->set_rules([
-                [
-                    'field' => 'nama',
-                    'label' => 'Nama',
-                    'rules' => 'required|alpha',
-                    'errors' => [
-                        'required' => '{label} harus diisi',
-                        'alpha' => '{label} tidak boleh ada nomor',
-                    ],
+        $this->form_validation->set_rules([
+            [
+                'field' => 'nama',
+                'rules' => 'required',
+                'errors' => ['required' => 'Nama harus diisi'],
+            ],
+            [
+                'field' => 'alamat',
+                'rules' => 'required',
+                'errors' => ['required' => 'Alamat harus diisi'],
+            ],
+            [
+                'field' => 'no_telepon',
+                'rules' => 'required|numeric|min_length[10]|max_length[13]',
+                'errors' => [
+                    'required' => 'Nomor telepon harus diisi',
+                    'min_length' => 'Nomor telepon kurang dari {param} angka',
+                    'max_length' => 'Nomor telepon lebih dari {param} angka',
                 ],
-                [
-                    'field' => 'alamat',
-                    'label' => 'Alamat',
-                    'rules' => 'required',
-                    'errors' => [
-                        'required' => '{label} harus diisi',
-                    ],
-                ],
-                [
-                    'field' => 'no_telepon',
-                    'label' => 'Nomor Telepon',
-                    'rules' => 'required|numeric|min_length[10]|max_length[13]',
-                    'errors' => [
-                        'required' => '{label} harus diisi',
-                        'min_length' => '{label} kurang dari {param} angka',
-                        'max_length' => '{label} lebih dari {param} angka',
-                    ],
-                ],
-            ]);
-
-            if ($this->form_validation->run()) {
-                $this->proses($this->input->post('nama'), $this->input->post('alamat'));
-            }
+            ],
+        ]);
+        if ($this->form_validation->run() == FALSE) {
+            $data['judul'] = "Pembayaran";
+            $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
+            $this->load->view('user/userheader', $data);
+            $this->load->view('produk/pembayaran', $data);
+            $this->load->view('footer', $data);
+        } else {
+            $this->proses($this->input->post('nama'), $this->input->post('alamat'));
         }
-
-        $data['judul'] = "Pembayaran";
-        $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view('user/userheader', $data);
-        $this->load->view('produk/pembayaran', $data);
-        $this->load->view('footer', $data);
     }
 
     private function proses($nama, $alamat)

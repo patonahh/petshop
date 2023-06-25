@@ -27,27 +27,21 @@
                     ?>
                 </div>
                 <h2>Form Pembayaran</h2>
-                <form method="post">
+                <form method="post" action="<?= base_url('user/pembayaran'); ?>">
                     <p>
                         <label class="text-pad">Nama Lengkap</label>
                         <input type="text" value="<?= set_value('nama'); ?>" name="nama" placeholder="Masukan Nama Lengkap" aria-describedby="namaError">
-                        <span id="namaError" class="form-text text-danger">
-                            <?= form_error('nama'); ?>
-                        </span>
+                        <?= form_error('nama', '<small class="alert-danger">', '</small>'); ?>
                     </p>
                     <p>
                         <label class="text-pad">Alamat Lengkap</label>
                         <input type="text" value="<?= set_value('alamat'); ?>" name="alamat" placeholder="Masukan Alamat Lengkap" aria-describedby="alamatError">
-                        <span id="alamatError" class="form-text text-danger">
-                            <?= form_error('alamat'); ?>
-                        </span>
+                        <?= form_error('alamat', '<small class="alert-danger">', '</small>'); ?>
                     </p>
                     <p>
                         <label class="text-pad">Nomor Telepon</label>
                         <input type="text" value="<?= set_value('no_telepon'); ?>" name="no_telepon" placeholder="Masukan Nomor Telepon Lengkap" aria-describedby="nomorError">
-                        <span id="nomorError" class="form-text text-danger">
-                            <?= form_error('no_telepon'); ?>
-                        </span>
+                        <?= form_error('no_telepon', '<small class="alert-danger">', '</small>'); ?>
                     </p>
                     <p>
                         <label class="text-pad">Pengiriman</label>
